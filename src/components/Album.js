@@ -114,34 +114,11 @@ import PlayerBar from './PlayerBar';
         <section id="album-info">
          <img id="album-cover-art" src={ this.state.album.albumCover } alt={ this.state.album.albumCover } />
           <div className="album-details">
-            <h1 id="album-title">{ this.state.album.title }</h1>
-            <h2 className="artist">{ this.state.album.artist }</h2>
+            <h3 id="album-title">{ this.state.album.title }</h3>
+            <h4 id="album-artist">{ this.state.album.artist }</h4>
             <div id="release-info">{ this.state.album.releaseInfo }</div>
           </div>
         </section>
-        <table id="song-list">
-          <colgroup>
-            <col id="song-number-column" />
-            <col id="song-title-column" />
-            <col id="song-duration-column" />
-          </colgroup>
-          <tbody>
-            { this.state.album.songs.map( (song, index) =>
-                <tr className="song" key={ index } onClick={() => this.handleSongClick(song)} >
-                  <td className="song-actins">
-                    <button>
-                      <span className="song-number">{ index + 1 }</span>
-                      <span className="ion-play"></span>
-                      <span className="ion-pause"></span>                    
-                    </button>
-                  </td>
-                  <td className="song-title">{ song.title }</td>
-                  <td className="song-duration">{ this.formatTime(song.duration) }</td>  
-                </tr>
-              )
-            }            
-          </tbody>
-        </table>
         <PlayerBar 
           isPlaying={this.state.isPlaying} 
           currentSong={this.state.currentSong}
@@ -155,7 +132,33 @@ import PlayerBar from './PlayerBar';
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
           formatTime={(s) => this.formatTime(s)}
         />
+                <section id="song-info">
+          <table id="song-list" cellSpacing="0" cellPadding="0">
+            <colgroup>
+              <col id="song-number-column" />
+              <col id="song-title-column" />
+              <col id="song-duration-column" />
+            </colgroup>
+            <tbody>
+              { this.state.album.songs.map( (song, index) =>
+                  <tr className="song" key={ index } onClick={() => this.handleSongClick(song)} >
+                    <td className="song-actions">
+                      <button id="list-button">
+                        <span><i className="material-icons md-light">play_circle_filled</i></span>
+                        <span><i className="material-icons md-light">pause_circle_filled</i></span> 
+                      </button>
+                    </td>
+                    <td id="song-number">{ index + 1 }.</td>
+                    <td id="song-title">{ song.title }</td>
+                    <td id="song-duration">{ this.formatTime(song.duration) }</td>  
+                  </tr>
+                )
+              }            
+            </tbody>
+          </table>
+        </section>
        </section>
+       
      );
    }
  }

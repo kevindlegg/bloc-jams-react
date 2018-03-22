@@ -1,3 +1,21 @@
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+body {
+  background: radial-gradient(ellipse at center,rgba(0,173,238,.5) 0,rgba(34,64,153,.5) 100%),linear-gradient(45deg,rgba(155,0,220,.92),rgba(34,64,153,.92));
+}
+
 .App {
   text-align: center;
 }
@@ -9,9 +27,17 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 20px;
   padding: 20px;
   color: white;
+}
+
+.App-header-nav {
+  text-align: left;
+}
+
+.App-header-nav a {
+  font-size: 20px;
 }
 
 .App-title {
@@ -25,4 +51,110 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  color: rgb(24,255,255);
+  font-weight: 500;
+  font-size: 20px;
+  text-decoration: none;
+  padding-right: 20px;
+}
+
+.Library-album-image {
+  width: 30%;
+  height: auto;
+}
+.Library-album-title {
+  font-size: 16px;
+  height: 16px;
+}
+
+.Library-album-artist {
+  font-size: 14px;
+  height: 14px;
+}
+
+.Library-album-songs {
+  font-size: 8px;
+  height: 8px;
+  padding-bottom: 10px;
+}
+
+#album-cover-art {
+  width: 45%;
+  height: auto;
+}
+
+#album-title {
+  height: 8px;
+  padding: 2px;  
+}
+
+#album-artist {
+  height: 8px;
+  padding: 2px;  
+}
+
+#release-info {
+  height: 8px;
+  padding: 2px;  
+}
+
+#song-info {
+  width: 20%;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+
+#song-list {
+  width: 100%;
+  table-layout: auto;
+  float: left;
+  padding: 5px;
+  background-color: rgba(255,255,255,0.15);
+}
+
+#song-number {
+  width:  2px;
+  text-align: right;
+  padding: 0px 4px 0px 5px;
+}
+
+#song-title {
+  text-align: left;
+  padding-right: 5px;
+}
+
+.song-actions {
+  width: 50px;
+  padding: 0;
+}
+
+.song {
+  text-align: left;
+  font-size: 12px;
+}
+
+#song-duration {
+  text-align: right;
+}
+
+.player-bar {
+  float: left;
+  width: 100%;
+  padding-top: 20px;
+}
+
+#currently-playing {
+  font-size: 18px;
+  color: aliceblue;
 }
