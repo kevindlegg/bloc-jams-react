@@ -16,7 +16,8 @@ import PlayerBar from './PlayerBar';
        currentTime: 0,
        duration: album.songs[0].duration,
        currentVolume: "50",
-       isPlaying: false
+       isPlaying: false,
+       isHovering: false
      };
 
      this.audioElement = document.createElement('audio');
@@ -108,6 +109,32 @@ import PlayerBar from './PlayerBar';
    }
 
 
+   buttonAction(song, index) {
+    const isSameSong = this.state.currentSong === song;
+    const pauseButton = <button>
+                        <span><i id="song-number-action" className="material-icons md-light">
+                          pause_circle_filled
+                        </i></span>
+                      </button>;
+    const playButton = <button>
+                        <span><i id="song-number-action" className="material-icons md-light">
+                          play_circle_filled
+                      </i></span>
+  </button>
+    const songNumber = <td id="song-number-action">{ index + 1 }.</td>
+
+
+    if(this.state.isPlaying && isSameSong) {
+      return pauseButton
+    } else  if (this.state.isHovering === index + 1 || 
+                (!this.state.isPlaying && isSameSong && this.state.currentTime > 0)) {
+              return playButton
+     } else {
+      return songNumber
+    }
+    //    : (this.state.isHovered === index) ? <span className="ion-play"></span>
+    }
+
    render() {
      return (
        <section className="album">
@@ -119,8 +146,9 @@ import PlayerBar from './PlayerBar';
             <div id="release-info">{ this.state.album.releaseInfo }</div>
           </div>
         </section>
+
         <PlayerBar 
-          isPlaying={this.state.isPlaying} 
+          isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
@@ -132,7 +160,8 @@ import PlayerBar from './PlayerBar';
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
           formatTime={(s) => this.formatTime(s)}
         />
-                <section id="song-info">
+
+        <section id="song-info">
           <table id="song-list" cellSpacing="0" cellPadding="0">
             <colgroup>
               <col id="song-number-column" />
@@ -141,14 +170,15 @@ import PlayerBar from './PlayerBar';
             </colgroup>
             <tbody>
               { this.state.album.songs.map( (song, index) =>
-                  <tr className="song" key={ index } onClick={() => this.handleSongClick(song)} >
+                  <tr className="song" 
+                      key={ index } 
+                      onClick={() => this.handleSongClick(song)}
+                      onMouseEnter={() => this.setState({ isHovering: index + 1})}
+                      onMouseLeave={() => this.setState({ isHovering: false })}
+                  >
                     <td className="song-actions">
-                      <button id="list-button">
-                        <span><i className="material-icons md-light">play_circle_filled</i></span>
-                        <span><i className="material-icons md-light">pause_circle_filled</i></span> 
-                      </button>
+                      { this.buttonAction(song, index) }
                     </td>
-                    <td id="song-number">{ index + 1 }.</td>
                     <td id="song-title">{ song.title }</td>
                     <td id="song-duration">{ this.formatTime(song.duration) }</td>  
                   </tr>

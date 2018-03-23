@@ -13,7 +13,10 @@
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 body {
-  background: radial-gradient(ellipse at center,rgba(0,173,238,.5) 0,rgba(34,64,153,.5) 100%),linear-gradient(45deg,rgba(155,0,220,.92),rgba(34,64,153,.92));
+  background-repeat: no-repeat;
+  background: radial-gradient(ellipse at center,rgba(0,173,238,.5) 0,
+                                                rgba(34,64,153,.5) 100%),
+              linear-gradient(45deg,rgba(155,0,220,.92),rgba(34,64,153,.92));
 }
 
 .App {
@@ -110,12 +113,11 @@ a {
 
 #song-info {
   width: 20%;
-  position: absolute;
-  bottom: 0;
   padding: 10px;
 }
 
 #song-list {
+  font-size: 14px !important;
   width: 100%;
   table-layout: auto;
   float: left;
@@ -123,20 +125,15 @@ a {
   background-color: rgba(255,255,255,0.15);
 }
 
-#song-number {
+#song-number-action {
+  font-size: inherit;
   width:  2px;
   text-align: right;
-  padding: 0px 4px 0px 5px;
 }
 
 #song-title {
   text-align: left;
   padding-right: 5px;
-}
-
-.song-actions {
-  width: 50px;
-  padding: 0;
 }
 
 .song {
