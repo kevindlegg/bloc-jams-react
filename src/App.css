@@ -16,7 +16,7 @@ body {
   background-repeat: no-repeat;
   background: radial-gradient(ellipse at center,rgba(0,173,238,.5) 0,
                                                 rgba(34,64,153,.5) 100%),
-              linear-gradient(45deg,rgba(155,0,220,.92),rgba(34,64,153,.92));
+              linear-gradient(45deg,rgba(155,0,220,.92),rgba(34,64,153,.92)) no-repeat fixed center;
 }
 
 .App {
