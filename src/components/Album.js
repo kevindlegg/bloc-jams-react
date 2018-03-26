@@ -132,7 +132,6 @@ import PlayerBar from './PlayerBar';
      } else {
       return songNumber
     }
-    //    : (this.state.isHovered === index) ? <span className="ion-play"></span>
     }
 
    render() {
